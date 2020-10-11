@@ -21,7 +21,9 @@ class Calculator:
     def get_week_stats(self):
         week_stats=0
         today = dt.datetime.now().date()
+        #одна и та же переменная то с прописной, то со строчной буквы. Определитесь
         for record in self.records:
+            #двойные пробелы после знаков арифметических операций не есть хорошо
             if (today -  record.date).days <7 and (today -  record.date).days >=0:
                 week_stats +=record.amount
         return week_stats
@@ -45,6 +47,7 @@ class CashCalculator(Calculator):
             cash_remained /= EURO_RATE
             currency_type ='Euro'
         elif currency_type=='rub':
+            #присвоение числа вместо того, чтобы вывести остаток? Оч странно
             cash_remained == 1.00
             currency_type ='руб'
         if cash_remained > 0:
