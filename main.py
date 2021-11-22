@@ -52,19 +52,22 @@ class CashCalculator(Calculator):
     USD_RATE = float(60)  # Курс доллар США.
     EURO_RATE = float(70)  # Курс Евро.
 
-    def get_today_cash_remained(self, currency,
-                                USD_RATE=USD_RATE, EURO_RATE=EURO_RATE):
+    def get_today_cash_remained(self, currency, USD_RATE=USD_RATE, EURO_RATE=EURO_RATE):
         currency_type = currency
         cash_remained = self.limit - self.get_today_stats()
+
         if currency == 'usd':
             cash_remained /= USD_RATE
             currency_type = 'USD'
+
         elif currency_type == 'eur':
             cash_remained /= EURO_RATE
             currency_type = 'Euro'
+
         elif currency_type == 'rub':
             cash_remained == 1.00
             currency_type = 'руб'
+
         if cash_remained > 0:
             return (
                 f'На сегодня осталось {round(cash_remained, 2)} '
@@ -72,10 +75,10 @@ class CashCalculator(Calculator):
             )
         elif cash_remained == 0:
             return 'Денег нет, держись'
+
         elif cash_remained < 0:
             return 'Денег нет, держись:' \
-                   ' твой долг - {0:.2f} {1}'.format(-cash_remained,
-                                                     currency_type)
+                   ' твой долг - {0:.2f} {1}'.format(-cash_remained, currency_type)
 
     def get_week_stats(self):
         super().get_week_stats()
