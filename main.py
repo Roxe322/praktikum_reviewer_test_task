@@ -12,9 +12,9 @@ class Record:
         # Код должен в первую очередь хорошо читаться, быть понятным.
         # И вместо пустой строки по умолчанию лучше использовать None.
         self.date = (
-            dt.datetime.now().date()
-            if not date
-            else dt.datetime.strptime(date, '%d.%m.%Y').date()
+            dt.datetime.now().date() if
+            not
+            date else dt.datetime.strptime(date, '%d.%m.%Y').date())
         )
         self.comment = comment
 
